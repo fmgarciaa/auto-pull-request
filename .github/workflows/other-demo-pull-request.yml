@@ -16,8 +16,8 @@ jobs:
 
       - name: Crear Rama
         run: |
-          git checkout -b feature-branch  # Cambia "feature-branch" al nombre de la rama que deseas crear
-          git push origin feature-branch  # Envía la nueva rama al repositorio remoto
+          git checkout -b bug1  # Cambia "bug1" al nombre de la rama que deseas crear
+          git push origin bug1  # Envía la nueva rama al repositorio remoto
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -26,8 +26,8 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: feature-branch  # Rama de origen (la que acabamos de crear)
+          branch: bug1  # Rama de origen (la que acabamos de crear)
           base: main              # Rama de destino (main)
           title: "Automated Pull Request - Auto Merge"
           body: "This pull request was automatically generated on push to main."
-          labels: "auto-merge"
+          labels: "bug"
