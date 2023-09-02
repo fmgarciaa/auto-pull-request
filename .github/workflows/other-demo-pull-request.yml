@@ -17,6 +17,8 @@ jobs:
         run: |
           git checkout -b feature-branch  # Cambia "feature-branch" al nombre de la rama que deseas crear
           git push origin feature-branch  # Envía la nueva rama al repositorio remoto
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Crear Pull Request
         id: cpr
