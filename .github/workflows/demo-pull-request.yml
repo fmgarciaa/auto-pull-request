@@ -32,10 +32,11 @@ jobs:
 
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
+          base: main
           title: "Automated Test Passed - Auto Merge"
           body: "This pull request was automatically generated because tests passed on the main branch."
           labels: "auto-merge"
