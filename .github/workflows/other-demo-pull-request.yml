@@ -16,7 +16,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ secrets.GITHUB_REF }}
+          branch: ${{ github.ref }}
           base: main 
           title: "Automated Pull Request - Auto Merge for"
           body: "This pull request was automatically generated on push to main."
