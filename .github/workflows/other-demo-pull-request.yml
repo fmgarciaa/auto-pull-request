@@ -1,7 +1,10 @@
-name: Crear Rama y Pull Request en GitHub Actions
-run-name: Test Pull Request automatize 🚀
+name: PR to Review Code
+run-name: Review Code 🚀
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'feature/**'
 
 jobs:
   create_branch_and_pull_request:
@@ -18,6 +21,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
           base: main 
-          title: "Automated Pull Request - Auto Merge for"
+          title: "Reviw code in ${{ github.ref }} - Create by ${{ github.ref_name }}"
           body: "This pull request was automatically generated on push to main."
-          labels: "bug"
+          labels: "review code"
