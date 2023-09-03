@@ -1,10 +1,10 @@
-name: Crear Rama y Pull Request en GitHub Actions
-run-name: Test Pull Request automatize 🚀
+name: PR to Review Code
+run-name: Review Code 🚀
 
 on:
   push:
     branches:
-      - main
+      - 'feature/**'
 
 jobs:
   create_branch_and_pull_request:
@@ -14,20 +14,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Crear Rama
-        run: |
-          git checkout -b bug3  # Cambia "bug3" al nombre de la rama que deseas crear
-          git push origin bug3  # Envía la nueva rama al repositorio remoto
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Crear Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: bug3  # Rama de origen (la que acabamos de crear)
-          base: main              # Rama de destino (main)
-          title: "Automated Pull Request - Auto Merge"
+          branch: ${{ github.ref }}
+          base: main 
+          title: "Reviw code in ${{ github.ref }} - Create by ${{ github.ref_name }}"
           body: "This pull request was automatically generated on push to main."
-          labels: "bug"
+          labels: "review code"
