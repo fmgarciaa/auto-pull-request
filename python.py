@@ -7,3 +7,6 @@ def suma(x):
 def rest(x):
     a = x -1
     return a
+
+def mult(x):
+    pass
